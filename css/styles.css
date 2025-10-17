@@ -1,0 +1,981 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap');
+
+/* Hard reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: "Lora", Georgia, "Times New Roman", Times, serif;
+    font-size: 21px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+}
+
+/* Config: compact nav width */
+:root {
+    --nav-width-default: 326px;
+    --nav-width: var(--nav-width-default);
+}
+
+/* Fixed sidebar navigation - DESKTOP ONLY */
+.nav-tabs {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: var(--nav-width);
+    min-width: 208px;
+    max-width: 312px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 18px 10px 24px 10px;
+    background-color: #f9f9f9;
+    border-right: 1px solid #e0e0e0;
+    overflow-y: scroll; /* Changed from auto to scroll to always show scrollbar */
+    overflow-x: hidden;
+    z-index: 1000;
+    scrollbar-width: thick; /* Make scrollbar thicker */
+    scrollbar-color: #888 #d5d5d5; /* Same gray as subtitle, light gray track */
+    box-shadow: 2px 0 8px rgba(0,0,0,0.03);
+}
+
+/* Custom scrollbar styling for WebKit browsers (Chrome, Safari, Edge) */
+.nav-tabs::-webkit-scrollbar {
+    width: 18px; /* Extra wide for maximum visibility */
+    background: #d5d5d5;
+}
+
+.nav-tabs::-webkit-scrollbar-track {
+    background: #d5d5d5;
+    border-left: 2px solid #b0b0b0;
+    border-radius: 0;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+}
+
+.nav-tabs::-webkit-scrollbar-thumb {
+    background: #888; /* Same gray as subtitle */
+    border-radius: 9px;
+    border: 3px solid #d5d5d5; /* Thicker border for contrast */
+    min-height: 232px; /* Much longer thumb for better visibility */
+    transition: background 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.nav-tabs::-webkit-scrollbar-thumb:hover {
+    background: #666; /* Slightly darker gray on hover */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.nav-tabs::-webkit-scrollbar-thumb:active {
+    background: #555; /* Darker gray when dragging */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Scrollbar corner (if both scrollbars appear) */
+.nav-tabs::-webkit-scrollbar-corner {
+    background: #d5d5d5;
+}
+
+/* Remove the extra sidebar */
+.sidebar {
+    display: none !important;
+}
+
+/* Logo */
+.nav-logo {
+    width: 110px;
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto 18px auto;
+    display: block;
+}
+
+/* Nav links */
+.nav-link {
+    text-decoration: none;
+    color: #2c5282;
+    font-size: 21px;
+    padding: 10px 8px;
+    border-radius: 4px;
+    background: none;
+    font-family: "Lora", Georgia, "Times New Roman", Times, serif;
+    text-align: left;
+    cursor: pointer;
+    white-space: normal;
+    word-wrap: break-word;
+    transition: background 0.15s, color 0.15s;
+    margin: 0 0 2px 0;
+    display: block;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    background: #e6f0fa;
+    color: #17406a;
+    text-decoration: none;
+}
+
+.nav-link.active {
+    color: #000;
+    font-weight: 600;
+    background: #dde8f5;
+}
+
+/* Main container */
+.container {
+    margin-left: var(--nav-width);
+    padding: 30px 0;
+    width: calc(100% - var(--nav-width));
+    min-width: 320px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: margin-left 200ms ease;
+}
+
+/* Header */
+header {
+    width: 100%;
+    max-width: 900px;
+    padding: 10px 50px 0 50px;
+    margin-bottom: 3rem;
+    box-sizing: border-box;
+}
+
+header .subtitle {
+    font-size: 40px;
+    color: #888;
+    font-weight: 400;
+    margin-bottom: 8px;
+    line-height: 1.3;
+    white-space: nowrap;
+}
+
+header .subtitle .number-first {
+    font-size: 98px;
+}
+
+header .subtitle .ordinal {
+    font-size: 64.32px;
+}
+
+header h1 {
+    font-size: 50px;
+    font-weight: 700;
+    color: #000;
+    margin: 0 0 81px 0;
+    padding-bottom: 32px;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Main content area */
+main {
+    width: 100%;
+    max-width: 900px;
+    padding: 0 50px;
+    box-sizing: border-box;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Tab sections */
+.tab-content {
+    display: none;
+    width: 100%;
+    box-sizing: border-box;
+    padding-bottom: 131px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Typography */
+p {
+    margin-bottom: 16px;
+    color: #333;
+    line-height: 1.6;
+}
+
+h2 {
+    font-size: 28px;
+    color: #000;
+    font-weight: bold;
+    margin: 0 0 24px 0;
+}
+
+h3 {
+    font-size: 24px;
+    color: #000;
+    font-weight: bold;
+    margin: 24px 0 12px 0;
+}
+
+h4 {
+    font-size: 20px;
+    color: #000;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+}
+
+/* Lists */
+ul {
+    margin: 8px 0;
+    padding-left: 40px;
+}
+
+li {
+    margin-bottom: 4px;
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    color: #4a90e2;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* First child resets */
+.tab-content > h2:first-child,
+.tab-content > h3:first-child,
+.tab-content > p:first-child {
+    margin-top: 0;
+}
+
+/* HOME TAB */
+#home h3:first-of-type {
+    margin-top: 0;
+    margin-bottom: 12px;
+    padding-top: 0;
+    border-top: none;
+}
+
+#home h3:nth-of-type(2),
+#home h3:nth-of-type(3) {
+    margin-top: 32px;
+    margin-bottom: 12px;
+    padding-top: 81px;
+    border-top: 1px solid #ddd;
+}
+
+#home p {
+    margin-bottom: 16px;
+}
+
+#home p:nth-of-type(2) {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+/* TOPICS TAB */
+#topics p:first-of-type {
+    margin-top: 0;
+}
+
+#topics h3 {
+    font-size: 19px;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 24px;
+}
+
+#topics h3 + p {
+    margin-top: 2px;
+}
+
+/* COMMITTEES TAB */
+#committees h3:first-of-type {
+    margin-top: 0;
+}
+
+/* SPEAKER TAB */
+#speaker p:first-of-type {
+    margin-top: 0;
+}
+
+#speaker h3:first-of-type {
+    margin-top: 0;
+    margin-bottom: 48px;
+}
+
+#speaker h3:nth-of-type(2) {
+    margin-top: 152px;
+    margin-bottom: 48px;
+}
+
+/* DEADLINE TAB */
+#deadline h3:first-of-type {
+    margin-top: 24px;
+}
+
+/* CALL FOR PAPER TAB */
+#call-for-paper h3:first-of-type {
+    font-size: 20px;
+}
+
+#call-for-paper hr {
+    margin: 32px 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+/* ACCEPTED PAPERS TAB */
+#accepted-papers h2 {
+    margin-bottom: 24px;
+}
+
+#accepted-papers p {
+    margin-top: 0;
+}
+
+/* BEST PAPER AWARDS TAB */
+#best-paper-awards h3:first-of-type {
+    margin-top: 0;
+}
+
+/* REGISTRATION TAB */
+#registration h3:first-of-type {
+    margin-top: 24px;
+}
+
+#registration h3 {
+    margin-top: 32px;
+}
+
+#registration h4 {
+    margin-top: 20px;
+}
+
+#registration img {
+    display: block;
+    margin: 16px 0;
+}
+
+#registration hr {
+    margin: 32px 0 81px 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+/* PROGRAM SCHEDULE TAB */
+#progress-schedule h2 {
+    margin-bottom: 24px;
+}
+
+#progress-schedule p {
+    margin-top: 0;
+}
+
+/* SPECIAL ISSUES TAB */
+#special-issues p {
+    margin-top: 0;
+}
+
+/* ACCOMMODATION TAB */
+#accommodation h2 {
+    margin-bottom: 24px;
+}
+
+#accommodation p:first-of-type {
+    margin-top: 0;
+}
+
+/* CONTACTS TAB */
+#contacts h3:first-of-type {
+    margin-top: 0;
+}
+
+#contacts h4 {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* HOW TO REACH TAB */
+#how-to-reach h3:first-of-type {
+    margin-top: 0;
+}
+
+#how-to-reach h4 {
+    margin-top: 20px;
+}
+
+#how-to-reach p:first-of-type {
+    margin-top: 0;
+}
+
+/* Google Maps */
+.map-container {
+    margin: 24px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 400px;
+    border: none;
+    display: block;
+}
+
+.map-link {
+    display: inline-block;
+    color: #4a90e2;
+    margin-top: 8px;
+    font-size: 18px;
+}
+
+/* Hamburger menu button: hidden on desktop, visible on mobile */
+.hamburger-menu {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 2003;
+    background: #2c5282;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease;
+}
+
+.hamburger-menu:hover {
+    background: #1e3a5f;
+}
+
+.hamburger-menu span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: white;
+    margin: 5px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+/* Overlay for mobile sidebar */
+.mobile-menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.mobile-menu-overlay.active {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Speaker list */
+.speakers-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: calc(3em + 30px);
+    margin-bottom: 18px;
+}
+
+.speaker-item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 77px;
+    width: auto;
+    min-height: auto;
+    box-sizing: border-box;
+}
+
+.speaker-info {
+    position: relative;
+    background: none;
+    padding: 0;
+    padding-top: 0;
+    border-radius: 0;
+    order: 1;
+    display: flex;
+    align-items: flex-end;
+    min-height: 245px;
+}
+
+.speaker-info p {
+    margin: 0;
+    line-height: 1.3;
+    color: #333;
+    text-align: right;
+    font-size: 18px;
+    width: 100%;
+}
+
+.speaker-info p strong {
+    display: block;
+    margin-bottom: 2.2px;
+    font-size: 20px;
+}
+
+.speaker-item img {
+    width: 245px;
+    height: 245px;
+    object-fit: contain;
+    object-position: center center;
+    border-radius: 6px;
+    display: block;
+    background: #eee;
+    order: 2;
+    flex-shrink: 0;
+}
+
+/* Specific styling for Prof. Christiane Tammer's image */
+.speaker-item img[src*="Christiane%20Tammer"],
+.speaker-item img[src*="Christiane Tammer"] {
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+/* Specific styling for Prof. Tamás Terlaky's image */
+.speaker-item img[src*="Tam%C3%A1s%20Terlaky"],
+.speaker-item img[src*="Tamás Terlaky"] {
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+/* Specific styling for Prof. S. K. Neogy's image */
+.speaker-item img[src*="S.%20K.%20Neogy"],
+.speaker-item img[src*="S. K. Neogy"] {
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+/* Specific styling for Prof. Juan Enrique Martinez-Legaz's image */
+.speaker-item img[src*="Juan%20Enrique%20Martinez-Legaz"],
+.speaker-item img[src*="Juan Enrique Martinez-Legaz"] {
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+/* Specific styling for Prof. Minh Dao's image */
+.speaker-item img[src*="Minh%20Dao"],
+.speaker-item img[src*="Minh Dao"] {
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+/* Specific styling for Prof. Q. H. Ansari's image */
+.speaker-item img[src*="Q.%20H.%20Ansari"],
+.speaker-item img[src*="Q. H. Ansari"] {
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+/* Specific styling for Prof. Zai-Yun Peng's image */
+.speaker-item img[src*="Zai-Yun%20Peng"],
+.speaker-item img[src*="Zai-Yun Peng"] {
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+/* Specific styling for Prof. Zhiang Zhou's image */
+.speaker-item img[src*="Zhiang%20Zhou"],
+.speaker-item img[src*="Zhiang Zhou"] {
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+/* Specific styling for Prof. Sanyou Mei's image */
+.speaker-item img[src*="Sanyou%20Mei"],
+.speaker-item img[src*="Sanyou Mei"] {
+    object-fit: cover;
+    object-position: center 10%;
+}
+
+/* Specific styling for Prof. V. Vetrivel's image */
+.speaker-item img[src*="V.%20Vetrivel"],
+.speaker-item img[src*="V. Vetrivel"] {
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+/* Specific styling for Prof. Anurag Jayswal's image */
+.speaker-item img[src*="Anurag%20Jayswal"],
+.speaker-item img[src*="Anurag Jayswal"] {
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+/* Specific styling for Prof. Joydeep Dutta's image */
+.speaker-item img[src*="Joydeep%20Dutta"],
+.speaker-item img[src*="Joydeep Dutta"] {
+    object-fit: cover;
+    object-position: center 15%;
+}
+
+/* Specific styling for Prof. C. S. Lalitha's image */
+.speaker-item img[src*="C.%20S.%20Lalitha"],
+.speaker-item img[src*="C. S. Lalitha"] {
+    object-fit: cover;
+    object-position: center 18%;
+}
+
+/* Specific styling for Prof. Samarjit Kar's image */
+.speaker-item img[src*="Smarajit%20Kar"],
+.speaker-item img[src*="Smarajit Kar"],
+.speaker-item img[src*="Samarjit%20Kar"],
+.speaker-item img[src*="Samarjit Kar"] {
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+/* Specific styling for Dr. Akhlad Iqbal's image */
+.speaker-item img[src*="Akhlad%20Iqbal"],
+.speaker-item img[src*="Akhlad Iqbal"] {
+    object-fit: cover;
+    object-position: center 30%;
+}
+
+/* Specific styling for Dr. Kuntal Som's image */
+.speaker-item img[src*="Kuntal%20Som"],
+.speaker-item img[src*="Kuntal Som"] {
+    object-fit: cover;
+    object-position: center 2%;
+}
+
+/* Specific styling for Dr. Vivek Laha's image */
+.speaker-item img[src*="Vivek%20Laha"],
+.speaker-item img[src*="Vivek Laha"] {
+    object-fit: cover;
+    object-position: center 15%;
+}
+
+/* Specific styling for Prof. Shashi Kant Mishra's image */
+.speaker-item img[src*="Shashi%20Kant%20Mishra"],
+.speaker-item img[src*="Shashi Kant Mishra"] {
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+/* Specific styling for Prof. Dharmaraja Selvamuthu's image */
+.speaker-item img[src*="Dharmaraja%20Selvamuthu"],
+.speaker-item img[src*="Dharmaraja Selvamuthu"] {
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+/* Specific styling for Dr. Shyam Kamal's image */
+.speaker-item img[src*="Shyam%20Kamal"],
+.speaker-item img[src*="Shyam Kamal"] {
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+/* Specific styling for Dr. Prashanta Majee's image */
+.speaker-item img[src*="Prashanta%20Majee"],
+.speaker-item img[src*="Prashanta Majee"] {
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+/* Specific styling for Dr. Vishnu Pratap Singh's image */
+.speaker-item img[src*="Vishnu%20Pratap%20Singh"],
+.speaker-item img[src*="Vishnu Pratap Singh"] {
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+/* Specific styling for Prof. Somesh Kumar's image */
+.speaker-item img[src*="Somesh%20Kumar"],
+.speaker-item img[src*="Somesh Kumar"] {
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - CRITICAL FIX
+   ======================================== */
+
+/* Desktop: Always show sidebar at different widths */
+@media (min-width: 901px) {
+    .hamburger-menu,
+    .mobile-menu-overlay {
+        display: none !important;
+    }
+    
+    .nav-tabs {
+        position: fixed !important;
+        left: 0 !important;
+        top: 0 !important;
+        transform: none !important;
+        width: var(--nav-width) !important;
+    }
+    
+    .container {
+        margin-left: var(--nav-width) !important;
+        width: calc(100% - var(--nav-width)) !important;
+    }
+}
+
+/* Tablet: Narrower sidebar */
+@media (min-width: 901px) and (max-width: 1200px) {
+    :root {
+        --nav-width: 234px;
+    }
+    
+    .nav-tabs {
+        width: 234px !important;
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+    
+    .nav-link {
+        font-size: 17px;
+    }
+}
+
+@media (min-width: 901px) and (max-width: 1000px) {
+    :root {
+        --nav-width: 208px;
+    }
+    
+    .nav-tabs {
+        width: 208px !important;
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+    
+    .nav-link {
+        font-size: 16px;
+    }
+}
+
+/* Mobile: Hamburger menu mode */
+@media (max-width: 900px) {
+    .hamburger-menu {
+        display: block !important;
+    }
+    
+    .mobile-menu-overlay {
+        display: block !important;
+    }
+    
+    .nav-tabs {
+        position: fixed !important;
+        width: 80vw !important;
+        max-width: 300px !important;
+        min-width: 0 !important;
+        left: 0 !important;
+        top: 0 !important;
+        height: 100vh !important;
+        transform: translateX(-100%) !important;
+        transition: transform 0.3s ease !important;
+        z-index: 2002 !important;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+        padding: 18px 16px 24px 16px;
+    }
+    
+    .nav-tabs.mobile-active {
+        transform: translateX(0) !important;
+    }
+    
+    .container {
+        margin-left: 0 !important;
+        width: 100% !important;
+        padding: 20px 8px;
+    }
+    
+    .nav-logo {
+        width: 110px;
+        margin: 0 auto 18px auto;
+        margin-top: 50px;
+    }
+    
+    .nav-link {
+        font-size: 19px;
+        padding: 10px 8px;
+    }
+    
+    /* Show visible scrollbar on mobile */
+    .nav-tabs {
+        overflow-y: scroll !important;
+        scrollbar-width: thick;
+        scrollbar-color: #888 #d5d5d5;
+    }
+    
+    .nav-tabs::-webkit-scrollbar {
+        display: block !important;
+        width: 22px !important;
+        -webkit-appearance: none;
+    }
+    
+    .nav-tabs::-webkit-scrollbar-track {
+        background: #d5d5d5;
+        border-left: 2px solid #b0b0b0;
+        box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+        -webkit-appearance: none;
+    }
+    
+    .nav-tabs::-webkit-scrollbar-thumb {
+        background: #888 !important;
+        border-radius: 8px;
+        border: 3px solid #d5d5d5;
+        min-height: 60px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        -webkit-appearance: none;
+    }
+    
+    .nav-tabs::-webkit-scrollbar-thumb:hover {
+        background: #666 !important;
+    }
+    
+    .nav-tabs::-webkit-scrollbar-thumb:active {
+        background: #555 !important;
+    }
+    
+    /* Mobile header styling */
+    header {
+        padding: 10px 15px 0 15px;
+    }
+    
+    header .subtitle {
+        font-size: 24px;
+        white-space: normal;
+        word-wrap: break-word;
+        line-height: 1.4;
+        margin-top: 30px;
+    }
+    
+    header .subtitle .number-first {
+        font-size: 58px;
+    }
+    
+    header .subtitle .ordinal {
+        font-size: 38px;
+    }
+    
+    header h1 {
+        font-size: 26px;
+        margin: 0 0 40px 0;
+        padding-bottom: 20px;
+        line-height: 1.4;
+        word-wrap: break-word;
+        white-space: normal;
+    }
+    
+    main {
+        padding: 0 15px;
+    }
+    
+    #how-to-reach h3:first-of-type {
+        margin-bottom: 60px;
+    }
+    
+    .speaker-item {
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        gap: 16px !important;
+        margin-bottom: 48px !important;
+    }
+    
+    .speaker-info {
+        padding: 0 !important;
+        margin: 0 !important;
+        transform: translateY(0) !important;
+        min-height: 0 !important;
+        order: 2 !important;
+        text-align: center !important;
+        align-items: flex-start !important;
+    }
+    
+    .speaker-item img {
+        width: 230px !important;
+        height: 230px !important;
+        order: 1 !important;
+        object-fit: cover !important;
+    }
+    
+    .speaker-info p {
+        font-size: 16px;
+        text-align: center !important;
+    }
+    
+    .speaker-info p strong {
+        font-size: 18px;
+    }
+
+    .speakers-list {
+        margin-bottom: 60px;
+    }
+}
+
+/* Extra small mobile */
+@media (max-width: 480px) {
+    .nav-tabs {
+        width: 85vw !important;
+    }
+    
+    .hamburger-menu {
+        top: 15px;
+        left: 15px;
+        padding: 10px;
+    }
+    
+    .hamburger-menu span {
+        width: 22px;
+    }
+    
+    header {
+        padding: 10px 10px 0 10px;
+    }
+    
+    header .subtitle {
+        font-size: 20px;
+    }
+    
+    header .subtitle .number-first {
+        font-size: 48px;
+    }
+    
+    header .subtitle .ordinal {
+        font-size: 32px;
+    }
+    
+    header h1 {
+        font-size: 22px;
+        margin: 0 0 30px 0;
+        padding-bottom: 15px;
+    }
+    
+    main {
+        padding: 0 10px;
+        font-size: 18px;
+    }
+}
