@@ -611,13 +611,6 @@ a:hover {
     object-position: center 20%;
 }
 
-/* Specific styling for Prof. Sanyou Mei's image */
-.speaker-item img[src*="Sanyou%20Mei"],
-.speaker-item img[src*="Sanyou Mei"] {
-    object-fit: cover;
-    object-position: center 10%;
-}
-
 /* Specific styling for Prof. V. Vetrivel's image */
 .speaker-item img[src*="V.%20Vetrivel"],
 .speaker-item img[src*="V. Vetrivel"] {
