@@ -546,7 +546,7 @@ a:hover {
 .speaker-item img {
     width: 245px;
     height: 245px;
-    object-fit: contain;
+    object-fit: cover;
     object-position: center center;
     border-radius: 6px;
     display: block;
@@ -709,6 +709,20 @@ a:hover {
 .speaker-item img[src*="Somesh Kumar"] {
     object-fit: cover;
     object-position: center 20%;
+}
+
+/* Specific styling for Prof. Nil Kamal Hazra's image */
+.speaker-item img[src*="Nil%20Kamal%20Hazra"],
+.speaker-item img[src*="Nil Kamal Hazra"] {
+    object-fit: cover;
+    object-position: center 30%;
+}
+
+/* Specific styling for Prasit Cholamjiak's image */
+.speaker-item img[src*="Prasit%20Cholamjiak"],
+.speaker-item img[src*="Prasit Cholamjiak"] {
+    object-fit: cover;
+    object-position: center 30%;
 }
 
 /* ========================================
