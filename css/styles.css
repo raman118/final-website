@@ -815,7 +815,7 @@ a:hover {
     .container {
         margin-left: 0 !important;
         width: 100% !important;
-        padding: 20px 8px;
+        padding: 80px 8px 20px 8px;
     }
     
     .nav-logo {
@@ -876,7 +876,7 @@ a:hover {
         white-space: normal;
         word-wrap: break-word;
         line-height: 1.4;
-        margin-top: 70px;
+        margin-top: 0;
     }
     
     header .subtitle .number-first {
