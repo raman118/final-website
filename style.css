@@ -1,0 +1,41 @@
+/* Reset and mobile viewport fixes */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    height: -webkit-fill-available;
+    overflow-x: hidden;
+}
+
+body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Fix for mobile browsers */
+@supports (-webkit-touch-callout: none) {
+    body {
+        min-height: -webkit-fill-available;
+    }
+}
+
+/* Ensure no fixed elements cause offset issues */
+@media only screen and (max-width: 768px) {
+    body {
+        padding-top: 0;
+        margin-top: 0;
+    }
+    
+    /* If you have a fixed header, ensure it doesn't push content */
+    header, nav {
+        position: relative;
+        top: 0;
+        transform: none;
+    }
+}
