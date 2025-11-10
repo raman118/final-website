@@ -20,6 +20,11 @@ function switchTab(tabId) {
 		targetLink.classList.add('active');
 		targetTab.classList.add('active');
 	}
+	
+	// Force scroll to top immediately
+	window.scrollTo(0, 0);
+	document.documentElement.scrollTop = 0;
+	document.body.scrollTop = 0;
 }
 
 // On page load, restore tab from hash (but avoid native anchor jump by resetting scroll)
@@ -29,7 +34,9 @@ window.addEventListener('DOMContentLoaded', () => {
 	switchTab(tabId);
 
 	// ensure any native jump is overridden after layout renders
-	requestAnimationFrame(() => window.scrollTo(0, 0));
+	window.scrollTo(0, 0);
+	document.documentElement.scrollTop = 0;
+	document.body.scrollTop = 0;
 });
 
 // Handle back/forward navigation without layout jumps
@@ -43,7 +50,9 @@ window.addEventListener('popstate', () => {
 	}
 
 	// override any browser scrolling/jump
-	requestAnimationFrame(() => window.scrollTo(0, 0));
+	window.scrollTo(0, 0);
+	document.documentElement.scrollTop = 0;
+	document.body.scrollTop = 0;
 });
 
 // Link click handling: use history.pushState instead of setting location.hash
@@ -65,8 +74,10 @@ navLinks.forEach(link => {
 			closeMobileMenu();
 		}
 
-		// Force scroll to top after layout updates to avoid any visual jump
-		requestAnimationFrame(() => window.scrollTo(0, 0));
+		// Force scroll to top
+		window.scrollTo(0, 0);
+		document.documentElement.scrollTop = 0;
+		document.body.scrollTop = 0;
 	});
 });
 
@@ -161,18 +172,33 @@ function setViewportHeight() {
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
 
-// Set on load
-setViewportHeight();
+// Set on load and force scroll to top
+window.addEventListener('load', function() {
+    setViewportHeight();
+    
+    // Multiple attempts to force scroll to top
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    
+    setTimeout(() => {
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+    }, 50);
+    
+    setTimeout(() => {
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+    }, 150);
+});
 
 // Update on resize and orientation change
 window.addEventListener('resize', setViewportHeight);
-window.addEventListener('orientationchange', setViewportHeight);
-
-// Prevent initial scroll jump on mobile
-window.addEventListener('load', function() {
-    setTimeout(function() {
-        window.scrollTo(0, 0);
-    }, 0);
+window.addEventListener('orientationchange', () => {
+    setViewportHeight();
+    window.scrollTo(0, 0);
 });
 
 // Prevent address bar from causing layout shifts

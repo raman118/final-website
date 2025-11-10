@@ -798,28 +798,11 @@ a:hover {
 
 /* Mobile: Hamburger menu mode */
 @media (max-width: 900px) {
-    /* Fix iOS Safari viewport */
-    html {
-        position: fixed;
-        overflow: hidden;
-        width: 100%;
-        height: 100%;
-    }
-    
-    body {
-        position: relative;
-        overflow-x: hidden;
-        overflow-y: auto;
-        width: 100%;
-        height: 100%;
-        -webkit-overflow-scrolling: touch;
-    }
-    
     .hamburger-menu {
         display: block !important;
         position: fixed !important;
-        top: 10px !important;
-        left: 10px !important;
+        top: 15px !important;
+        left: 15px !important;
         z-index: 2003 !important;
     }
     
@@ -849,14 +832,14 @@ a:hover {
     .container {
         margin-left: 0 !important;
         width: 100% !important;
-        padding: 20px 8px 20px 8px !important; /* Changed from 80px to 20px */
-        min-height: 100%;
+        padding: 0 !important;
+        padding-bottom: 20px !important;
     }
     
     .nav-logo {
         width: 110px;
         margin: 0 auto 18px auto;
-        margin-top: 10px; /* Changed from 50px */
+        margin-top: 10px;
     }
     
     .nav-link {
@@ -903,7 +886,8 @@ a:hover {
     
     /* Mobile header styling */
     header {
-        padding: 60px 15px 0 15px !important; /* Added top padding to push below hamburger */
+        padding: 0 15px !important;
+        padding-top: 70px !important;
         margin-top: 0 !important;
     }
     
@@ -913,7 +897,6 @@ a:hover {
         word-wrap: break-word;
         line-height: 1.4;
         margin-top: 0 !important;
-        padding-top: 0 !important;
     }
     
     header .subtitle .number-first {
@@ -987,12 +970,40 @@ a:hover {
     }
     
     .hamburger-menu {
-        top: 10px !important;
-        left: 10px !important;
+        top: 12px !important;
+        left: 12px !important;
         padding: 10px;
     }
     
+    .hamburger-menu span {
+        width: 22px;
+    }
+    
     header {
-        padding: 60px 10px 0 10px !important; /* Ensure top padding on small screens */
+        padding: 0 10px !important;
+        padding-top: 65px !important;
+    }
+    
+    header .subtitle {
+        font-size: 20px;
+    }
+    
+    header .subtitle .number-first {
+        font-size: 48px;
+    }
+    
+    header .subtitle .ordinal {
+        font-size: 32px;
+    }
+    
+    header h1 {
+        font-size: 22px;
+        margin: 0 0 30px 0;
+        padding-bottom: 15px;
+    }
+    
+    main {
+        padding: 0 10px;
+        font-size: 18px;
     }
 }
