@@ -328,14 +328,8 @@ a:hover {
     margin-top: 0;
 }
 
-#speaker h3:first-of-type {
-    margin-top: 0;
-    margin-bottom: 48px;
-}
-
-#speaker h3:nth-of-type(2) {
-    margin-top: 152px;
-    margin-bottom: 48px;
+#speaker h3 {
+    margin: 80px 0 48px 0;
 }
 
 /* DEADLINE TAB */
@@ -617,12 +611,7 @@ a:hover {
     object-position: center 20%;
 }
 
-/* Specific styling for Prof. Zhiang Zhou's image */
-.speaker-item img[src*="Zhiang%20Zhou"],
-.speaker-item img[src*="Zhiang Zhou"] {
-    object-fit: cover;
-    object-position: center 20%;
-}
+
 
 /* Specific styling for Prof. V. Vetrivel's image */
 .speaker-item img[src*="V.%20Vetrivel"],
@@ -917,15 +906,32 @@ a:hover {
         margin-bottom: 60px;
     }
     
-    .speaker-item {
+    /* Mobile speaker section - COMPLETE SPACING FIX */
+    #speaker h3 {
+        margin: 55px 0 35px 0 !important;
+    }
+    
+    #speaker h3:first-of-type {
+        margin-top: 0 !important;
+        margin-bottom: 35px !important;
+    }
+    
+    /* Speaker list container spacing */
+    #speaker .speakers-list {
+        margin-bottom: 0 !important;
+        gap: 35px !important;
+    }
+    
+    /* Individual speaker items */
+    #speaker .speaker-item {
         flex-direction: column !important;
         align-items: center !important;
         width: 100% !important;
         gap: 16px !important;
-        margin-bottom: 48px !important;
+        margin-bottom: 0 !important;
     }
     
-    .speaker-info {
+    #speaker .speaker-info {
         padding: 0 !important;
         margin: 0 !important;
         transform: translateY(0) !important;
@@ -935,24 +941,24 @@ a:hover {
         align-items: flex-start !important;
     }
     
-    .speaker-item img {
+    #speaker .speaker-item img {
         width: 230px !important;
         height: 230px !important;
         order: 1 !important;
         object-fit: cover !important;
     }
     
-    .speaker-info p {
+    #speaker .speaker-info p {
         font-size: 16px;
         text-align: center !important;
     }
     
-    .speaker-info p strong {
+    #speaker .speaker-info p strong {
         font-size: 18px;
     }
 
     .speakers-list {
-        margin-bottom: 60px;
+        margin-bottom: 15px !important;
     }
 }
 
