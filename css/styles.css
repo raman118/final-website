@@ -114,6 +114,25 @@ body {
     display: block;
 }
 
+.conference-title,
+.conference-date {
+    text-align: center;
+    font-size: 13.65px; /* 21px * 0.65 */
+    color: #333; /* Inherit from body or set explicitly */
+    margin: 4px auto; /* Adjust margin as needed */
+    display: block;
+    line-height: 1.2;
+}
+
+.conference-title {
+    font-weight: bold; /* Make the title bold */
+    margin-top: 8px;
+}
+
+.conference-date {
+    margin-bottom: 18px;
+}
+
 /* Nav links */
 .nav-link {
     text-decoration: none;
