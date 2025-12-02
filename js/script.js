@@ -212,3 +212,95 @@ window.addEventListener('resize', function() {
     lastHeight = currentHeight;
 });
 
+// ============================================
+// GALLERY SLIDESHOW FUNCTIONALITY
+// ============================================
+
+let slideIndex = 1;
+let slideTimer;
+
+// Initialize slideshow when gallery tab is opened
+function initSlideshow() {
+    const slides = document.getElementsByClassName("slideshow-slide");
+    const dots = document.getElementsByClassName("slideshow-dot");
+    
+    if (slides.length === 0) return; // No slides found
+    
+    // Hide all slides
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove("active");
+    }
+    
+    // Remove active class from all dots
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.remove("active");
+    }
+    
+    // Show current slide
+    if (slideIndex > slides.length) { slideIndex = 1; }
+    if (slideIndex < 1) { slideIndex = slides.length; }
+    
+    slides[slideIndex - 1].classList.add("active");
+    if (dots[slideIndex - 1]) {
+        dots[slideIndex - 1].classList.add("active");
+    }
+}
+
+// Change slide (manual navigation)
+function changeSlide(n) {
+    clearTimeout(slideTimer);
+    slideIndex += n;
+    initSlideshow();
+    startAutoSlide();
+}
+
+// Set current slide (dot navigation)
+function currentSlide(n) {
+    clearTimeout(slideTimer);
+    slideIndex = n;
+    initSlideshow();
+    startAutoSlide();
+}
+
+// Auto advance slides every 3 seconds
+function autoSlide() {
+    slideIndex++;
+    initSlideshow();
+    slideTimer = setTimeout(autoSlide, 3000);
+}
+
+// Start auto-sliding
+function startAutoSlide() {
+    clearTimeout(slideTimer);
+    slideTimer = setTimeout(autoSlide, 3000);
+}
+
+// Initialize slideshow when page loads
+window.addEventListener('load', function() {
+    const galleryTab = document.getElementById('gallery');
+    if (galleryTab && galleryTab.classList.contains('active')) {
+        initSlideshow();
+        startAutoSlide();
+    }
+});
+
+// Restart slideshow when gallery tab is clicked
+const galleryNavLink = document.querySelector('[data-tab="gallery"]');
+if (galleryNavLink) {
+    galleryNavLink.addEventListener('click', function() {
+        setTimeout(function() {
+            slideIndex = 1;
+            initSlideshow();
+            startAutoSlide();
+        }, 100);
+    });
+}
+
+// Stop slideshow when leaving gallery tab
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function() {
+        if (this.getAttribute('data-tab') !== 'gallery') {
+            clearTimeout(slideTimer);
+        }
+    });
+});
